@@ -38,20 +38,18 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
-        $nom = $request->input('Nom');
-        $prenom = $request->input('Prenom');
-        $email = $request->input('Email');
-        $tele = $request->input('Tele');
+        $nom = $request->input('Nom_Tach');
+        $Desciption= $request->input('Description');
+       
 
         $contacts = TodoList::create([
-            "Nom" => $nom,
-            "Prenom" => $prenom,
-            "Email" => $email,
-            "Tele" => $tele,
+            "Nom_Tach" => $nom,
+            "Description" => $Desciption
+           
            
             ]);
             if($contacts){
-                return redirect('contact');
+                return redirect('index');
                 
                }
     }
