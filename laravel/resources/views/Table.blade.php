@@ -11,30 +11,32 @@
   
           <div class="card">
             <div class="card-header p-3">
-              <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Task List</h5>
+              <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Gestion des taches</h5>
             </div>
             <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
   
               <table class="table mb-0">
                 <thead>
                   <tr>
-                    <th scope="col">Team Member</th>
-                    <th scope="col">Task</th>
-                    <th scope="col">Priority</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nom de tache</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
+                @forelse ($Data as $value)
                 <tbody>
                   <tr class="fw-normal">
                     <td>
                      
-                      <span class="ms-2">Alice Mayer</span>
+                      <span class="ms-2">{{$value->id}}</span>
                     </td>
                     <td class="align-middle">
-                      <span>Call Sam For payments</span>
+                      <span>{{$value->Nom_Tach}}</span>
                     </td>
-                    <td class="align-middle">
-                      <h6 class="mb-0"><span class="badge bg-danger">High priority</span></h6>
+                    <td>
+                     
+                      <span class="ms-2">{{$value->Description}}</span>
                     </td>
                     <td class="align-middle">
                       <a href="#!" data-mdb-toggle="tooltip" title="Done"><i
@@ -42,6 +44,17 @@
                       <a href="#!" data-mdb-toggle="tooltip" title="Remove"><i
                           class="fas fa-trash-alt text-danger"></i></a>
                     </td>
+                    <td>
+                      <a href={{route('index.edit',$value->id)}}  > <button  className="btn btn-info"  >Edit</button></a>
+                      <form action="{{route('index.destroy',$value->id)}}" method="POST">
+                          @csrf
+                          @method("DELETE")
+                          <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">Delete</i></button>
+                      </form>
+                      
+                      
+                      
+                  </td>
                   </tr>
                   
                
@@ -51,12 +64,15 @@
                     
                 
                 </tbody>
+                @empty
+            @endforelse
+
               </table>
   
             </div>
             <div class="card-footer text-end p-3">
-              <button class="me-2 btn btn-link">Cancel</button>
-              <button class="btn btn-primary">Add Task</button>
+         
+               <a href="{{route('index.create')}}"><button class="btn btn-primary">Insere</button></a>
             </div>
           </div>
   
