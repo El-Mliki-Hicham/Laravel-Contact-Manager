@@ -1,6 +1,6 @@
 
 
-<h1>Contact Manager</h1>
+<h1>TodoList</h1>
 {{-- {{print_r($Contacts)}} --}}
 
 <!-- CSS only -->
@@ -17,26 +17,28 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Email</th>
-            <th>Tele</th>
-            <th>Action</th>
+            <th>Nom de tach</th>
+            <th>Description</th>
+           
+            
         </tr>
         </thead>
-        @forelse ($Contacts as $value)
+        @forelse ($Data as $value)
 
 
         <tbody >
             <tr>
             <td>{{$value->id}}</td>
-            <td>{{$value->Nom}}</td>
-            <td>{{$value->Prenom}}</td>
-            <td>{{$value->Email}}</td>
-            <td>{{$value->Tele}}</td>
+            <td>{{$value->Nom_Tach}}</td>
+            <td>{{$value->Description}}</td>
+            
             <td>
-                <a href={}  > <button  className="btn btn-info"  >Edit</button></a>
-                <button className="btn btn-danger">Delete</button>
+                <a href={{route('index.edit',$value->id)}}  > <button  className="btn btn-info"  >Edit</button></a>
+                <form action="{{route('index.destroy',$value->id)}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">Delete</i></button>
+                </form>
                 
                 
                 

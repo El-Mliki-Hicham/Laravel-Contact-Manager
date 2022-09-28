@@ -62,7 +62,9 @@ class TodoListController extends Controller
      */
     public function show($id)
     {
-        //
+        $Data = TodoList::select("*")->where('id',$id)->get();
+        
+        return view("show",compact('Data'));
     }
 
     /**
@@ -73,7 +75,9 @@ class TodoListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Data = TodoList::select('*')->where("id",$id)->get();
+        
+        return view("edit",compact('Data'));
     }
 
     /**
@@ -85,7 +89,19 @@ class TodoListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $nom = $request->input('Nom_Tach');
+        $Desciption= $request->input('Description');
+
+        $Data = TodoList::where("id",$id)
+    ->update([
+             "Nom_Tach" => $nom,
+            "Description" => $Desciption
+    
+    ]);
+    if($Data){
+        return redirect('index');
+        
+       }
     }
 
     /**
@@ -96,6 +112,10 @@ class TodoListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = TodoList::where('id',$id)->delete();
+
+        if ($delete) {
+          return  redirect("index");
+        }
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TodoList extends Model
 {
-    protected $table = 'TodoList';
+    protected $table = 'todo_lists';
     protected $fillable =  [ 'Nom_Tach', 'Description'];
     public $timestamps = false;
 }
