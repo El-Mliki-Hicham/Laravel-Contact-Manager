@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contacts;
+use App\Models\TodoList;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class TodoListController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $Contacts = Contacts::all();
+        $Data = TodoList::all();
+        return view('index',compact('Data'));
 
-        return view('index',compact('Contacts'));
+
     }
 
     /**
@@ -26,9 +27,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $Contacts = Contacts::all();
-
-        return view('insert',compact('Contacts'));
+        return view('insert');
     }
 
     /**
@@ -44,7 +43,7 @@ class ContactController extends Controller
         $email = $request->input('Email');
         $tele = $request->input('Tele');
 
-        $contacts = Contacts::create([
+        $contacts = TodoList::create([
             "Nom" => $nom,
             "Prenom" => $prenom,
             "Email" => $email,

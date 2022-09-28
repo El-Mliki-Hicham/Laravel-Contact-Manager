@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class TodoList extends Model
 {
-    protected $table = 'contacts';
-    protected $fillable =  [ 'Nom', 'Prenom', 'Tele', 'Email'];
+    protected $table = 'TodoList';
+    protected $fillable =  [ 'Nom_Tach', 'Description'];
     public $timestamps = false;
 }
