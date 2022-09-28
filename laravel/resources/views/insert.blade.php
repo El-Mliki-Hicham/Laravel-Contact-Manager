@@ -27,18 +27,10 @@
                                 <div class="col-lg-10">
                                     <input id="taskname" name="Description" type="text" class="form-control" placeholder="">
                                 </div>
-                            </div>
-                          
-                                                    
-                            
-                            
-                         
-                            
+                            </div>                         
                         
                     </div>
-                </div>
-                
-                                                          
+                </div>                                            
                                                            
                 <div class="row justify-content-end">
                     <div class="col-lg-10">
